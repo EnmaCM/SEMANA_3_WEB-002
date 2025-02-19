@@ -60,6 +60,7 @@
         <img width="400px" src="./IMAGES/SIDE_PORSHE_911_GT3.png" alt="">
         <div class="card">
             <p>De los mas divertidos para correr en el circuito!</p>
+            <audio controls src="./AUDIOS/PORSHE_911_GT3_SOUND.m4a"></audio>
         </div>
     </div>
     <div class="imgCarrousel">
@@ -89,6 +90,13 @@
     video.addEventListener('click',streamingHandler);
     playIcon.addEventListener('click',streamingHandler);
     pauseIcon.addEventListener('click',streamingHandler);
+
+    let audio = document.getElementsByTagName('audio')[0];
+    audio.addEventListener('play',()=>{
+        video.muted = true;
+   });
+   audio.addEventListener('ended',()=>video.muted = false);
+   audio.addEventListener('pause',()=>video.muted = false);
 </script>
 
 </html>

@@ -6,18 +6,89 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <nav>
         <ul>
             <li><a href="#">Inicio</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/">Referencia</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/" controls>Referencia</a></li>
         </ul>
     </nav>
     <main>
-        <h1>Porshe 911 gt3</h1>
+        <div id="banner">
+            <div id="mainTitle">    <h1>Porshe 911 GT3</h1> </div>
+            <img id ="bannerPorshe" src="./IMAGES/1_4_PORSHE_911_GT3_BLACK.jpg" alt="">        
+        <div>
+            <div id="carrousel">
+                <ul>
+                    <li>
+                        <h3>Velocidad maxima</h3>
+                        <p>311 km/h</p>
+                    </li>
+                    <li>
+                        <h3>Acceleracion</h3>
+                        <p>0-100 3.4s</p>
+                    </li>
+                    <li>
+                        <h3>Fuerza</h3>
+                        <p>375kW/ 510ps</p>
+                    </li>
+                </ul>
+            </div>
+
+    <div class="videoCard">
+        <h2 class="centered">GT3 en accion!</h2>
+        <div class="videoDisplay">
+        <video
+        autoplay
+        loop
+        preload="auto"
+        src="./VIDEOS/PORSHE_911_GT33_480.mp4">
+        </video>
+        <div class="iconsContainer">
+            <img id="play" src="./IMAGES/play.svg" alt="" >
+            <img id="pause" src="./IMAGES/pause.svg" alt="">
+        </div>
+        </div>
+
+    </div>
+    <div class="row" id="imgInfo">
+        <img width="400px" src="./IMAGES/SIDE_PORSHE_911_GT3.png" alt="">
+        <div class="card">
+            <p>De los mas divertidos para correr en el circuito!</p>
+        </div>
+    </div>
+    <div class="imgCarrousel">
+        <img src="./IMAGES/FRONT_PORSHE_911_GT3.jpeg" alt="">
+        <img src="./IMAGES/BACK_PORSHE_911_GT3.png" alt="">
+        <img src="./IMAGES/WHEEL_PORSHE_911_GT3.jpeg" alt="">
+        <img src="./IMAGES/AERIAL_SHOT_PORSHE_911_GT3.jpeg" alt="">
+    </div>
     </main>
 </body>
+<script>
+    let video = document.getElementsByTagName('video')[0];
+    let playIcon = document.getElementById('play');
+    let pauseIcon = document.getElementById('pause');
+    const streamingHandler = ()=>{
+        console.log(video);
+        if(video.paused) {
+            video.play();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'none'
+        } else{
+            video.pause();
+            playIcon.style.display = 'none';
+            pauseIcon.style.display = 'block';
+        }
+    }
+    video.addEventListener('click',streamingHandler);
+    playIcon.addEventListener('click',streamingHandler);
+    pauseIcon.addEventListener('click',streamingHandler);
+</script>
 
 </html>

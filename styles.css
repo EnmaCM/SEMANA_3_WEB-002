@@ -149,8 +149,7 @@ nav ul li a {
 
 }
 
-#play,
-#pause {
+#play, #pause {
     color: black;
     width: 4rem;
     height: 4rem;

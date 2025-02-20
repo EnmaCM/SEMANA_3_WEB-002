@@ -26,15 +26,15 @@
             <div id="carrousel">
                 <ul class="infoCards">
                     <li>
-                        <h3>Velocidad maxima</h3>
+                        <h3>Velocidad máxima</h3>
                         <p>311 km/h</p>
                     </li>
                     <li>
-                        <h3>Acceleracion</h3>
+                        <h3>Aceleración</h3>
                         <p>0-100 3.4s</p>
                     </li>
                     <li>
-                        <h3>Fuerza</h3>
+                        <h3>Potencia</h3>
                         <p>375kW/ 510ps</p>
                     </li>
                 </ul>
@@ -43,12 +43,7 @@
     <div class="videoCard">
         <h2 class="centered">GT3 en accion!</h2>
         <div class="videoDisplay">
-            <video
-
-            loop
-            preload="auto"
-            src="./VIDEOS/PORSHE_911_GT33_480.mp4">
-            </video>
+            <video loop preload="auto">
             <div class="iconsContainer">
                 <img id="play" src="./IMAGES/play.svg" alt="" >
                 <img id="pause" src="./IMAGES/pause.svg" alt="">
@@ -57,7 +52,7 @@
     </div>
     
     <div class="row" id="imgInfo">
-        <img width="400px" src="./IMAGES/SIDE_PORSHE_911_GT3.png" alt="">
+        <img src="./IMAGES/SIDE_PORSHE_911_GT3.png" class="imgInfoPic" alt="">
         <div class="card">
             <p>De los mas divertidos para correr en el circuito!</p>
             <div class="audioPlayer">
@@ -68,8 +63,8 @@
             </div>
         </div>
     </div>
-    <h1 class="titleLine">Galeria</h1>
-    <div class="imgCarrousel">
+    <h1 class="titleLine">Galería</h1>
+    <div class="gallery">
         <img src="./IMAGES/FRONT_PORSHE_911_GT3.jpeg" alt="">
         <img src="./IMAGES/BACK_PORSHE_911_GT3.png" alt="">
         <img src="./IMAGES/WHEEL_PORSHE_911_GT3.jpeg" alt="">
@@ -78,20 +73,28 @@
     </main>
     <footer> Ronel E. Cruz Mueses - Tarea para diseño y programacion web (2025)</footer>
 </body>
+
 <script>
+
     let video = document.getElementsByTagName('video')[0];
     let playIcon = document.getElementById('play');
     let pauseIcon = document.getElementById('pause');
-    let soundButton = document.getElementById('soundButton');
-    let playAudioImg = document.getElementById('playAudioImg');
-    let pauseAudioImg = document.getElementById('pauseAudioImg');
+    window.onload = ()=>{
+        if(screen.width > 1920){
+            video.src = "./VIDEOS/PORSHE_911_GT3_1080.mp4";
+        } else if(screen.width >1280){
+            video.src = "./VIDEOS/PORSHE_911_GT32_720.mp4";
+        } else{
+            video.src = "./VIDEOS/PORSHE_911_GT33_480.mp4";
+        }
+    };
     const streamingHandler = ()=>{
         console.log(video);
         if(video.paused) {
             video.play();
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'none'
-        } else{
+        } else {
             video.pause();
             playIcon.style.display = 'none';
             pauseIcon.style.display = 'block';
@@ -100,41 +103,42 @@
     video.addEventListener('click',streamingHandler);
     playIcon.addEventListener('click',streamingHandler);
     pauseIcon.addEventListener('click',streamingHandler);
-    video.addEventListener('autoplay',()=>playIcon.style.display='none');
 
     let audio = document.getElementsByTagName('audio')[0];
+    let soundButton = document.getElementById('soundButton');
+    let playAudioImg = document.getElementById('playAudioImg');
+    let pauseAudioImg = document.getElementById('pauseAudioImg');
+    
     audio.addEventListener('play',()=>{
         video.muted = true;
-   });
-   audio.addEventListener('ended',()=>video.muted = false);
-   audio.addEventListener('pause',()=>video.muted = false);
+    });
+    audio.addEventListener('ended',()=>video.muted = false);
+    audio.addEventListener('pause',()=>video.muted = false);
 
-   const playPauseAudio = ()=>{
-    if(audio.paused) {
-        audio.play();
-        pauseAudioImg.style.display = 'block';
-        playAudioImg.style.display = 'none';
+    const playPauseAudio = ()=>{
+        if(audio.paused) {
+            audio.play();
+            pauseAudioImg.style.display = 'block';
+            playAudioImg.style.display = 'none';
 
-    } else{
-        audio.pause();
+        } else{
+            audio.pause();
+            playAudioImg.style.display = 'block';
+            pauseAudioImg.style.display = 'none';
+
+        }
+        let originalColor = soundButton.style.color;
+        soundButton.style.backgroundColor = "black";
+        setTimeout(()=>soundButton.style.backgroundColor = originalColor,200);
+    };
+
+    soundButton.addEventListener('click',playPauseAudio);
+    playAudioImg.addEventListener('click',playPauseAudio);
+    pauseAudioImg.addEventListener('click',playPauseAudio);
+    audio.addEventListener('ended',()=>{
         playAudioImg.style.display = 'block';
         pauseAudioImg.style.display = 'none';
-
-    }
-    let originalColor = soundButton.style.color;
-    soundButton.style.backgroundColor = "black";
-    setTimeout(()=>soundButton.style.backgroundColor = originalColor,200);
-   };
-
-   soundButton.addEventListener('click',playPauseAudio);
-   playAudioImg.addEventListener('click',playPauseAudio);
-   pauseAudioImg.addEventListener('click',playPauseAudio);
-   audio.addEventListener('ended',()=>{
-    playAudioImg.style.display = 'block';
-    pauseAudioImg.style.display = 'none';
-
-
-   });
+    });
 
 
 </script>

@@ -196,12 +196,16 @@ img {
 footer {
     background-color: black;
     color: rgb(168, 168, 168);
-    padding: 100px;
+    padding: 30px;
+    padding-top: 100px;
+    padding-bottom:100px;
     text-align: center;
 }
 
+/*<<--------------------MEDIA SCREENS---------------->>*/
 
-/*VIDEO CARD*/
+
+/*<-----------VIDEO CARD----------->*/
 .videoCard video {
     width: 100%;
 }
@@ -218,16 +222,14 @@ footer {
     }
 }
 
-
-/*END VIDEO CARD*/
-
 @media screen and (max-width:855px) {
     .gallery imgl {
         max-height: 240px;
     }
 }
 
-/*INFO CARDS*/
+/*<-----------INFO CARDS---------->*/
+
 @media screen and (min-width:1287px) {
     .infoCards li {
         width: 400px;
@@ -271,9 +273,9 @@ footer {
 
 }
 
-/*END OF INFO CARDS*/
 
-/*IMG INFO*/
+/*<----------IMG INFO------------>*/
+
 @media screen and (max-width:739px) {
     #imgInfo {
         justify-content: space-between;
@@ -288,10 +290,7 @@ footer {
 
 }
 
-
-/*END IMGINFO*/
-
-/*TITLE*/
+/*<------------TITLE--------------->*/
 @media screen and (max-width:823px) {
     #mainTitle {
         height: 40px;
@@ -302,12 +301,10 @@ footer {
     }
 }
 
-/*END OF TITLE*/
-
-/*GALLERY*/
+/*<-------------GALLERY------------>*/
 @media screen and (min-width:1080px) {
     .titleLine {
-        font-size: 3%;
+        font-size: 2rem;
     }
 }
 
@@ -346,16 +343,16 @@ footer {
     }
 }
 
-/*END OF GALERIA*/
 
-/*INFO IMAGE CARD*/
+/*<------------INFO IMAGE CARD---------->*/
+
 @media screen and (min-width:1700px) {
     .imgInfoPic {
         width: 750px;
     }
 
     #soundButton {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
     }
 
     .card p {
@@ -369,7 +366,7 @@ footer {
     }
 
     #soundButton {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
     }
 
     .card p {
@@ -383,11 +380,15 @@ footer {
     }
 
     #soundButton {
-        font-size: 1.5rem;
+        font-size: 1.1rem;
     }
 
     .card p {
         font-size: 1.5rem;
+    }
+    .audioPlayer img {
+      height:  50%;
+      margin-left: 20px;
     }
 }
 
@@ -397,7 +398,7 @@ footer {
     }
 
     #soundButton {
-        font-size: 1.2rem;
+        font-size: 1rem;
     }
 
     .card p {
@@ -405,4 +406,15 @@ footer {
     }
 }
 
-/*END INFO IMAGE CARD*/
+/*-----FOOTER-----*/
+
+@media screen and (min-width:1920px) {
+    footer p {
+        font-size: 1.7rem;
+    }
+}
+@media screen and (min-width:1080px) and (max-width:1919px) {
+    footer p {
+        font-size: 1.2rem;
+    }
+}

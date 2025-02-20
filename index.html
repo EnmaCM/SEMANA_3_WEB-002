@@ -22,9 +22,9 @@
         <div id="banner">
             <div id="mainTitle">    <h1>Porshe 911 GT3</h1> </div>
             <img id ="bannerPorshe" src="./IMAGES/1_4_PORSHE_911_GT3_BLACK.jpg" alt="">        
-        <div>
+        </div>
             <div id="carrousel">
-                <ul>
+                <ul class="infoCards">
                     <li>
                         <h3>Velocidad maxima</h3>
                         <p>311 km/h</p>
@@ -43,26 +43,32 @@
     <div class="videoCard">
         <h2 class="centered">GT3 en accion!</h2>
         <div class="videoDisplay">
-        <video
-        autoplay
-        loop
-        preload="auto"
-        src="./VIDEOS/PORSHE_911_GT33_480.mp4">
-        </video>
-        <div class="iconsContainer">
-            <img id="play" src="./IMAGES/play.svg" alt="" >
-            <img id="pause" src="./IMAGES/pause.svg" alt="">
-        </div>
-        </div>
+            <video
 
+            loop
+            preload="auto"
+            src="./VIDEOS/PORSHE_911_GT33_480.mp4">
+            </video>
+            <div class="iconsContainer">
+                <img id="play" src="./IMAGES/play.svg" alt="" >
+                <img id="pause" src="./IMAGES/pause.svg" alt="">
+            </div>
+        </div>
     </div>
+    
     <div class="row" id="imgInfo">
         <img width="400px" src="./IMAGES/SIDE_PORSHE_911_GT3.png" alt="">
         <div class="card">
             <p>De los mas divertidos para correr en el circuito!</p>
-            <audio controls src="./AUDIOS/PORSHE_911_GT3_SOUND.m4a"></audio>
+            <div class="audioPlayer">
+                <audio src="./AUDIOS/PORSHE_911_GT3_SOUND.m4a"></audio>
+                <input type="button" id="soundButton" value="REPRODUCIR SONIDO DEL 911   ">
+                <img src="./IMAGES/play.svg" id="playAudioImg" style="background-color: black;" alt="">
+                <img src="./IMAGES/pause.svg" id="pauseAudioImg" style="background-color: black; display:none;" alt="">
+            </div>
         </div>
     </div>
+    <h1 class="titleLine">Galeria</h1>
     <div class="imgCarrousel">
         <img src="./IMAGES/FRONT_PORSHE_911_GT3.jpeg" alt="">
         <img src="./IMAGES/BACK_PORSHE_911_GT3.png" alt="">
@@ -70,11 +76,15 @@
         <img src="./IMAGES/AERIAL_SHOT_PORSHE_911_GT3.jpeg" alt="">
     </div>
     </main>
+    <footer> Ronel E. Cruz Mueses - Tarea para diseño y programacion web (2025)</footer>
 </body>
 <script>
     let video = document.getElementsByTagName('video')[0];
     let playIcon = document.getElementById('play');
     let pauseIcon = document.getElementById('pause');
+    let soundButton = document.getElementById('soundButton');
+    let playAudioImg = document.getElementById('playAudioImg');
+    let pauseAudioImg = document.getElementById('pauseAudioImg');
     const streamingHandler = ()=>{
         console.log(video);
         if(video.paused) {
@@ -90,6 +100,7 @@
     video.addEventListener('click',streamingHandler);
     playIcon.addEventListener('click',streamingHandler);
     pauseIcon.addEventListener('click',streamingHandler);
+    video.addEventListener('autoplay',()=>playIcon.style.display='none');
 
     let audio = document.getElementsByTagName('audio')[0];
     audio.addEventListener('play',()=>{
@@ -97,6 +108,35 @@
    });
    audio.addEventListener('ended',()=>video.muted = false);
    audio.addEventListener('pause',()=>video.muted = false);
+
+   const playPauseAudio = ()=>{
+    if(audio.paused) {
+        audio.play();
+        pauseAudioImg.style.display = 'block';
+        playAudioImg.style.display = 'none';
+
+    } else{
+        audio.pause();
+        playAudioImg.style.display = 'block';
+        pauseAudioImg.style.display = 'none';
+
+    }
+    let originalColor = soundButton.style.color;
+    soundButton.style.backgroundColor = "black";
+    setTimeout(()=>soundButton.style.backgroundColor = originalColor,200);
+   };
+
+   soundButton.addEventListener('click',playPauseAudio);
+   playAudioImg.addEventListener('click',playPauseAudio);
+   pauseAudioImg.addEventListener('click',playPauseAudio);
+   audio.addEventListener('ended',()=>{
+    playAudioImg.style.display = 'block';
+    pauseAudioImg.style.display = 'none';
+
+
+   });
+
+
 </script>
 
 </html>
